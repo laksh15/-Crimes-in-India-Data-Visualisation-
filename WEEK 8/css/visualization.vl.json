@@ -1,0 +1,169 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 500,
+  "title": "State wise MURDER and RAPE cases in INDIA under Indian Penal Code (IPC) ",
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/WEEK%208/css/12.csv"
+  },
+  "params": [
+    {
+      "name": "STATE_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "ANDHRA PRADESH",
+          "ARUNACHAL PRADESH",
+          "ASSAM",
+          "BIHAR",
+          "CHHATTISGARH",
+          "GOA",
+          "GUJARAT",
+          "HARYANA",
+          "HIMACHAL PRADESH",
+          "JAMMU & KASHMIR",
+          "JHARKHAND",
+          "KARNATAKA",
+          "KERALA",
+          "MADHYA PRADESH",
+          "MAHARASHTRA",
+          "MANIPUR",
+          "MEGHALAYA",
+          "MIZORAM",
+          "NAGALAND",
+          "ODISHA",
+          "PUNJAB",
+          "RAJASTHAN",
+          "SIKKIM",
+          "TAMIL NADU",
+          "TRIPURA",
+          "UTTAR PRADESH",
+          "UTTARAKHAND",
+          "WEST BENGAL",
+          "A & N ISLANDS",
+          "CHANDIGARH",
+          "D & N HAVELI",
+          "DAMAN & DIU",
+          "LAKSHADWEEP",
+          "PUDUCHERRY"
+        ],
+        "labels": [
+          "Show All",
+          "ANDHRA PRADESH",
+          "ARUNACHAL PRADESH",
+          "ASSAM",
+          "BIHAR",
+          "CHHATTISGARH",
+          "GOA",
+          "GUJARAT",
+          "HARYANA",
+          "HIMACHAL PRADESH",
+          "JAMMU & KASHMIR",
+          "JHARKHAND",
+          "KARNATAKA",
+          "KERALA",
+          "MADHYA PRADESH",
+          "MAHARASHTRA",
+          "MANIPUR",
+          "MEGHALAYA",
+          "MIZORAM",
+          "NAGALAND",
+          "ODISHA",
+          "PUNJAB",
+          "RAJASTHAN",
+          "SIKKIM",
+          "TAMIL NADU",
+          "TRIPURA",
+          "UTTAR PRADESH",
+          "UTTARAKHAND",
+          "WEST BENGAL",
+          "A & N ISLANDS",
+          "CHANDIGARH",
+          "D & N HAVELI",
+          "DAMAN & DIU",
+          "LAKSHADWEEP",
+          "PUDUCHERRY"
+        ],
+        "name": "SELECT STATE: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "STATE_selection == null || datum.STATE == STATE_selection"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "MURDER",
+      "type": "quantitative",
+      "title": "MURDER",
+      "axis": {"tickCount": 2},
+      "scale": {"type": "log", "domain": [1, 10000]}
+    },
+    "y": {
+      "field": "RAPE",
+      "type": "quantitative",
+      "axis": {"tickCount": 2},
+      "scale": {"type": "log", "domain": [1, 10000]}
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "year_highlight": {
+          "type": "multi",
+          "fields": ["YEAR"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "color": {
+          "condition": {
+            "selection": "year_highlight",
+            "field": "YEAR",
+            "type": "nominal"
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "year_highlight", "value": 0.9},
+          "value": 0.1
+        },
+        "tooltip": [
+          {"field": "STATE", "type": "nominal"},
+          {"field": "YEAR", "type": "quantitative", "format": ","},
+          {"field": "MURDER", "type": "quantitative", "format": ","},
+          {"field": "RAPE", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "STATE", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "(datum['STATE'] == 'GOA'  || datum['STATE'] == 'UTTAR PRADESH' || datum['STATE'] == 'PUNJAB') && datum['YEAR'] == '2012'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "STATE", "type": "nominal"},
+          {"field": "MURDER", "type": "quantitative", "format": ","},
+          {"field": "RAPE", "type": "quantitative", "format": ","},
+          {"field": "YEAR", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
