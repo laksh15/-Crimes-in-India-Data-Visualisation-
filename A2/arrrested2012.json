@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 500,
+  "title": " Persons arrested due to Crime against Women during 2012  ",
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/2012%20cases%20against%20women%20age%20wise.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Male Below 18 Years",
+        "Female Below 18 Years",
+        "Male Between 18-30 Years",
+        "Female Between 18-30 Years",
+        "Male Between 30-45 Years",
+        "Female Between 30-45 Years",
+        "Male Above 60 Years",
+        "Female Above 60 Years"
+      ]
+    }
+  ],
+  "selection": {
+    "filter": {"type": "multi", "fields": ["key"], "bind": "legend"}
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "STATE/UT", "type": "ordinal", "title": "STATE / UT"},
+    "y": {
+      "field": "Crime head",
+      "type": "quantitative",
+      "title": "N u m b e r   o f    t o t a l     p e r s o n     a r r e s t e d   "
+    },
+    "color": {
+      "field": "key",
+      "type": "nominal",
+      "title": " Arrested by Age and Sex"
+    },
+    "opacity": {
+      "condition": {"selection": "filter", "value": 0.9},
+      "value": 0.1
+    },
+    "tooltip": [
+      {"field": "STATE/UT", "type": "nominal"},
+      {"field": "Total Male", "type": "quantitative", "format": ","},
+      {"field": "Total Female", "type": "quantitative", "format": ","},
+      {
+        "field": "Crime head",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Total"
+      }
+    ]
+  },
+  "config": {}
+}
