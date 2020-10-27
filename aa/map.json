@@ -29,8 +29,8 @@
       "legend": {
         "orient": "none",
         "direction": "horizontal",
-        "legendX": 120,
-        "legendY": 340,
+        "legendX": 400,
+        "legendY": 660,
         "title": null
       }
     },
