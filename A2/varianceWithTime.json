@@ -114,7 +114,10 @@
       "condition": {"selection": "year_highlight", "value": 0.9},
       "value": 0.1
     },
-    "tooltip": [{"field": "STATE", "type": "nominal"}]
+    "tooltip": [{"field": "STATE", "type": "nominal"},
+                {"field": "YEAR", "type": "nominal"},
+                {"field": "TOTAL IPC CRIMES", "type": "quantitative"}
+               ]
   },
   "config": {}
 }
