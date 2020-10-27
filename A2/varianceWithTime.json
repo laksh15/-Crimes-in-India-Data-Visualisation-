@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 500,
+  "title": "Variation in Number of crimes with the passage of time ",
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/WEEK%208/css/12.csv"
+  },
+  "params": [
+    {
+      "name": "STATE_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "ANDHRA PRADESH",
+          "ARUNACHAL PRADESH",
+          "ASSAM",
+          "BIHAR",
+          "CHHATTISGARH",
+          "GOA",
+          "GUJARAT",
+          "HARYANA",
+          "HIMACHAL PRADESH",
+          "JAMMU & KASHMIR",
+          "JHARKHAND",
+          "KARNATAKA",
+          "KERALA",
+          "MADHYA PRADESH",
+          "MAHARASHTRA",
+          "MANIPUR",
+          "MEGHALAYA",
+          "MIZORAM",
+          "NAGALAND",
+          "ODISHA",
+          "PUNJAB",
+          "RAJASTHAN",
+          "SIKKIM",
+          "TAMIL NADU",
+          "TRIPURA",
+          "UTTAR PRADESH",
+          "UTTARAKHAND",
+          "WEST BENGAL",
+          "A & N ISLANDS",
+          "CHANDIGARH",
+          "D & N HAVELI",
+          "DAMAN & DIU",
+          "LAKSHADWEEP",
+          "PUDUCHERRY"
+        ],
+        "labels": [
+          "Show All",
+          "ANDHRA PRADESH",
+          "ARUNACHAL PRADESH",
+          "ASSAM",
+          "BIHAR",
+          "CHHATTISGARH",
+          "GOA",
+          "GUJARAT",
+          "HARYANA",
+          "HIMACHAL PRADESH",
+          "JAMMU & KASHMIR",
+          "JHARKHAND",
+          "KARNATAKA",
+          "KERALA",
+          "MADHYA PRADESH",
+          "MAHARASHTRA",
+          "MANIPUR",
+          "MEGHALAYA",
+          "MIZORAM",
+          "NAGALAND",
+          "ODISHA",
+          "PUNJAB",
+          "RAJASTHAN",
+          "SIKKIM",
+          "TAMIL NADU",
+          "TRIPURA",
+          "UTTAR PRADESH",
+          "UTTARAKHAND",
+          "WEST BENGAL",
+          "A & N ISLANDS",
+          "CHANDIGARH",
+          "D & N HAVELI",
+          "DAMAN & DIU",
+          "LAKSHADWEEP",
+          "PUDUCHERRY"
+        ],
+        "name": "SELECT STATE: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "STATE_selection == null || datum.STATE == STATE_selection"}
+  ],
+  "selection": {
+    "year_highlight": {"type": "multi", "fields": ["STATE"], "bind": "legend"}
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "YEAR", "type": "ordinal", "title": "YEAR"},
+    "y": {
+      "field": "TOTAL IPC CRIMES",
+      "type": "quantitative",
+      "title": "T O T A L   C R I M E S   R E C O R D E D"
+    },
+    "color": {
+      "condition": {
+        "selection": "year_highlight",
+        "field": "STATE",
+        "type": "nominal"
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "year_highlight", "value": 0.9},
+      "value": 0.1
+    },
+    "tooltip": [{"field": "STATE", "type": "nominal"}]
+  },
+  "config": {}
+}
