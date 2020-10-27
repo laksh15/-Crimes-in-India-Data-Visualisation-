@@ -29,5 +29,7 @@
     },
     "tooltip": [{"field": "STATE", "type": "nominal"}]
   },
-  "config": {}
+  "config": {"view": {
+     "stroke": "transparent"
+  }}
 }
