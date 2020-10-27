@@ -25,7 +25,14 @@
     "color": {
       "field": "Number",
       "type": "quantitative",
-      "title": "Number of Crimes "
+      "title": "Number of Crimes ",
+      "legend": {
+        "orient": "none",
+        "direction": "horizontal",
+        "legendX": 120,
+        "legendY": 340,
+        "title": null
+      }
     },
     "tooltip": [{"field": "STATE", "type": "nominal"}]
   },
