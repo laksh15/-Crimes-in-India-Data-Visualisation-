@@ -151,7 +151,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "(datum['STATE'] == 'GOA'  || datum['STATE'] == 'UTTAR PRADESH' || datum['STATE'] == 'PUNJAB') && datum['YEAR'] == '2012'",
+            "test": "(datum['STATE'] == 'Goa'  || datum['STATE'] == 'Uttar Pradesh' || datum['STATE'] == 'Punjab') && datum['YEAR'] == '2012'",
             "value": 1
           },
           "value": 0
