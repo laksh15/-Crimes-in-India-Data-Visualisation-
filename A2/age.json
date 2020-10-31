@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 500,
+  "title": " Persons arrested due to Crime against Women during 2012  ",
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/diff_category.csv"
+  },
+  "params": [
+    {
+      "name": "STATE_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Andhra Pradesh",
+          "Arunachal Pradesh",
+          "Assam",
+          "Bihar",
+          "Chhattisgarh",
+          "Goa",
+          "Gujarat",
+          "Haryana",
+          "Himachal Pradesh",
+          "Jammu& Kashmir",
+          "Jharkhand",
+          "Karnatka",
+          "Kerala",
+          "Madhya Pradesh",
+          "Maharashtra",
+          "Manipur",
+          "Meghalaya",
+          "Mizoram",
+          "Nagaland",
+          "Odisha",
+          "Punjab",
+          "Rajasthan",
+          "Sikkim",
+          "Tamil Nadu",
+          "Tripura",
+          "Uttar Pradesh",
+          "Uttrakhand",
+          "West Bengal",
+          "A & N Islands",
+          "Chandigarh",
+          "D & N Haveli",
+          "Daman & Diu",
+          "Lakshadweep",
+          "Puducherry"
+        ],
+        "labels": [
+          "Show All",
+          "Andhra Pradesh",
+          "Arunachal Pradesh",
+          "Assam",
+          "Bihar",
+          "Chhattisgarh",
+          "Goa",
+          "Gujarat",
+          "Haryana",
+          "Himachal Pradesh",
+          "Jammu& Kashmir",
+          "Jharkhand",
+          "Karnatka",
+          "Kerala",
+          "Madhya Pradesh",
+          "Maharashtra",
+          "Manipur",
+          "Meghalaya",
+          "Mizoram",
+          "Nagaland",
+          "Odisha",
+          "Punjab",
+          "Rajasthan",
+          "Sikkim",
+          "Tamil Nadu",
+          "Tripura",
+          "Uttar Pradesh",
+          "Uttrakhand",
+          "West Bengal",
+          "A & N Islands",
+          "Chandigarh",
+          "D & N Haveli",
+          "Daman & Diu",
+          "Lakshadweep",
+          "Puducherry"
+        ],
+        "name": "SELECT STATE: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "STATE_selection == null || datum.STATE == STATE_selection"}
+  ],
+  "selection": {
+    "a1": {"type": "multi", "fields": ["category"], "bind": "legend"}
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "STATE", "type": "ordinal", "title": "STATE / UT"},
+    "y": {
+      "field": "amount",
+      "type": "quantitative",
+      "title": "N u m b e r   o f    t o t a l     p e r s o n     a r r e s t e d   ",
+      "axis": {"grid": false}
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": " Arrested by Age and Sex"
+    },
+    "opacity": {"condition": {"selection": "a1", "value": 0.9}, "value": 0.1},
+    "tooltip": [
+      {"field": "STATE", "type": "nominal"},
+      {"field": "amount", "type": "nominal", "title": " Amount"},
+      {"field": "category", "type": "nominal", "title": " Category"}
+    ]
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}
