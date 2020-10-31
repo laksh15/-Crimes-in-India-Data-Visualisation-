@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "",
+  "width": 600,
+  "height": 900,
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/Indian_States.json",
+    "format": {"type": "topojson", "feature": "Indian_States"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.st_nm",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/aa/map.csv"
+        },
+        "key": "STATE",
+        "fields": ["Crime", "value", "STATE"]
+      }
+    }
+  ],
+  "projection": {"type": "equirectangular"},
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Number of Crimes ",
+      "legend": {
+        "orient": "none",
+        "direction": "horizontal",
+        "legendX": 400,
+        "legendY": 660,
+        "title": null
+      }
+    },
+    "tooltip": [
+      {"field": "STATE", "type": "nominal"},
+      {"field": "value", "type": "nominal", "title": "Total Crimes"}
+    ]
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}
