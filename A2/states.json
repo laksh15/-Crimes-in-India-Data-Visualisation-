@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 500,
+  "title": " State/UT wise total IPC Crime Numbers ",
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/percentage.csv"
+  },
+  "encoding": {
+    "y": {"field": "STATE", "type": "ordinal", "sort": "-x"},
+    "x": {
+      "aggregate": "sum",
+      "field": "value",
+      "title": "Total Crime ",
+      "axis": {"grid": false}
+    }
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "color": {
+          "field": "STATE",
+          "type": "nominal",
+          "title": "STATE/UT",
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "STATE", "type": "nominal"},
+          {"field": "value", "type": "nominal", "title": "Total IPC Crimes"},
+          {
+            "field": "percent",
+            "type": "nominal",
+            "title": " Overall % of Total"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "right", "xOffset": 54, "aria": false},
+      "encoding": {
+        "text": {"field": "percent", "type": "nominal"},
+        "color": {
+          "condition": {
+            "test": {"field": "percent", "gt": 10},
+            "value": "white"
+          },
+          "value": "black"
+        }
+      }
+    }
+  ],
+  "config": {"view": {"stroke": "transparent"}}
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 500,
+  "title": " Different types of Crimes  ",
+  "description": "A simple pie chart with embedded data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/pie3.csv"
+  },
+  "encoding": {
+    "theta": {"field": "Total", "type": "quantitative", "stack": true},
+    "color": {
+      "field": "Crime",
+      "type": "nominal",
+      "legend": {
+        "orient": "none",
+        "direction": "vertical",
+        "legendX": 450,
+        "legendY": 60,
+        "title": null
+      }
+    },
+    "opacity": {"condition": {"selection": "a1", "value": 0.9}, "value": 0.1},
+    "tooltip": [
+      {"field": "Crime", "type": "nominal"},
+      {"field": "Total", "type": "nominal"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "arc", "outerRadius": 150},
+      "selection": {
+        "a1": {"type": "multi", "fields": ["Crime"], "bind": "legend"}
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 170},
+      "encoding": {"text": {"field": "Total", "type": "nominal"}}
+    }
+  ],
+  "config": {"view": {"stroke": "transparent"}}
+}
