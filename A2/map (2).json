@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "",
-  "width": 600,
-  "height": 900,
+  "width": 800,
+  "height": 1000,
   "data": {
     "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/Indian_States.json",
     "format": {"type": "topojson", "feature": "Indian_States"}
