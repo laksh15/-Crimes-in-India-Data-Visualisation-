@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "COVID-19 Confirmed Cases",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/kmah1107/FIT3179ass2/main/Indian_States.json",
+    "format": {"type": "topojson", "feature": "Indian_States"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.st_nm",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/kmah1107/FIT3179ass2/main/indiacovid.csv"
+        },
+        "key": "State/UnionTerritory",
+        "fields": ["Confirmed"]
+      }
+    },
+    {"calculate": "datum.Confirmed ", "as": "Confirmed"}
+  ],
+  "projection": {"type": "equirectangular"},
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Confirmed",
+      "type": "quantitative",
+      "scale": {"type": "log", "domain": [1000, 1000000]}
+    },
+    "tooltip": [
+      {
+        "field": "properties.st_nm",
+        "type": "nominal",
+        "title": "State/UnionTerritory"
+      },
+      {"field": "Confirmed", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+}
