@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style type="text/css">
+.fa_custom {
+color: #0099CC
+}
+</style>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <!-- Import vega-embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- custom style -->
+  <style>
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    h1 {
+      font-weight: bold;
+      color: #729ec7;
+      font-size: 100px;
+
+    }
+
+    h2 {
+      font-weight: normal;
+      color: #14bb7b;
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    body {
+      background-color: rgb(8, 6, 6);
+    }
+
+    .page {
+      width: 1200px;
+      background-color: white;
+      margin: auto;
+      padding: 50px;
+      padding-top: 35px;
+    }
+
+    .vis-container {
+      width: 100%;
+    }
+
+    .description h2,
+    h1 {
+      margin-top: 0px;
+    }
+
+    .description-right {
+      padding-left: 20px;
+    }
+
+    .description-left {
+      padding-right: 20px;
+    }
+
+    .box {
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  clear: both;
+}
+
+.red {
+  background-color: rgb(255, 255, 255);
+}
+    .pure-g {
+      margin-bottom: 25px;
+    }
+
+    .small-font {
+      font-size: 14px;
+    }
+
+    p.ex1 {
+  padding-top: 4em;
+}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+
+    <div class="pure-g">
+      <div class="pure-u-1-3"> 
+        <div class="description description-left">
+          <h1>Crimes in India </h1>
+    <h2 style="margin-top: 1cm;">Crime in India has been recorded since the British Raj, with comprehensive statistics now compiled annually by the <b>National Crime Records Bureau(NCRB)</b>, under the Ministry of Home Affairs (India)(MHA).
+      <b>Indian Penal Code(IPC)</b> is the main criminal code of India intended to cover all all aspects of criminal law. This visualisation depicts state wise crimes commited in India between 2001 and 2012 under Indian Penal Code(IPC). 
+      All the State/UT names are as per 2011 census. All the data used is taken from  <a href ="https://data.gov.in/" style="color:#14bb7b" target = "_blank"> Open Government Data Platform India</a> website. 
+      More than a fifth of all registered crime were classified as offences affecting the human body, which included violent 
+      acts such as murder, kidnapping, assualt and death by negligence.  </h2>
+      <div>&nbsp;&nbsp;<div class='box red'></div> = State formed after 2012</div>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="vis4" class="vis-container"></div>
+        <div class="description description-right"></div>
+      </div>
+      
+    </div>
+
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>   </p></div>
+
+      <!-- pure grid group -->
+      <div class="pure-g" >
+        <div class="pure-u-2-5">
+          <div class="description description-left">
+            <h2 style="margin-top: 1cm;"><b>State/UT wise Total IPC Crime Data</b></h2>
+            <p style="margin-top: 1cm;">Location has a significant impact on crime in India. Madya Pradesh had the highest crime rate among
+               all States of India. All Northeast States and union territories had a 
+               significantly lower crime rate. Contrary to popular belief, 
+               the most populous state of Uttar Pradesh had the 5th highest crime rate in the country. States in Northeast India have consistently reported much 
+               lower crime rates, with 4 of the 5 states having the lowest 
+               crime in being from the region. This visualisation depicts comparison of States in the terms of total Crimes happened between 2001 and 2012 
+              in respective states. The % refers to the amount of crimes happened in particular state 
+            to the total crimes happened in India between this period. It is quite drastic to see the higher % difference between the states. </p>
+          </div>
+        </div>
+        <div class="pure-u-3-5">
+          <div id="vis6" class="vis-container">
+            <div class="description description-right"></div>
+          </div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+     <!-- pure grid group -->
+     <div class="pure-g">
+      <div class="pure-u-2-5">
+        <div class="description description-left">
+          <h2 style="margin-top: 3cm;"><b>Different type of Crimes </b></h2>
+          <p style="margin-top: 1cm;">Crime in India is very common and happens in many different ways. Along with violent crimes (like homicide, robbery, and assault), and property crimes (like burglary,
+             theft, motor vehicle theft, and arson), there are major problems with organized crime, the illegal drug trade, arms trafficking, corruption, and many other forms of crime. This visualisation 
+             depicts different forms of Crime and its amount over time period of 2001 and 2012. </p>
+        </div>
+      </div>
+      <div class="pure-u-3-5">
+        <div id="vis5" class="vis-container">
+          <div class="description description-right"></div>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    
+      <!-- pure grid group -->
+      <div class="pure-g" style="margin-top: 2cm;">
+        <div class="pure-u-2-5">
+          <div class="description description-left">
+            <h2 style="margin-top: 1cm;"><b>Person arrested due to Crime against Women during 2012</b></h2>
+            <p style="margin-top: 1cm;"> According to the <b>National Crime Records Bureau of India</b>, 
+              reported incidents of crime against women increased 6.4% during 2012, and a crime against a woman is committed every three minutes. 
+              Statistics have been consistent in reporting that men commit more criminal acts than women. 
+              Most typically, these acts are committed by men as a result of the long-standing gender inequalities present in the country. 
+              India's Gender Inequality Index rating of 0.524 in 2012, putting it in the bottom 20% of ranked countries for that year.
+              This visualisation depicts the amount of persons arrested due to crime against women during 2012 in the terms of aged and sex.
+              We can clearly depicts most of the crime against women are done by Men age between 18-30 followed by Men aged between 30-45.
+              States like UP, Andhra Pradesh and West Bengal which have lower literacy rates are having more crime against women. 
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-3-5">
+          <div id="vis2" class="vis-container">
+            <div class="description description-right"></div>
+          </div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+       <!-- pure grid group -->
+       <div class="pure-g" style="margin-top: 2cm;">
+        <div class="pure-u-2-5">
+          <div class="description description-left">
+            <h2 style="margin-top: 1cm;"><b>Variation in Number of crimes with the Time</b></h2>
+            <p style="margin-top: 1cm;"> In most of the states Crime has increased over the time. West Bengal is the state which shows very high increasing peak over time. In 2006, 5,102,460 cognisable crimes were committed including 1,878,293 (IPC) crimes and 3,224,167 Special & Local Laws (SLL) crimes, 
+              with an increase of 1.5% over 2005 (50,26,337). IPC crime rate in 2006 was 167.7 compared to 165.3 in 2005 showing an increase of 1.5% in 2006 over 2005. The results 
+              suggest that rates of murder, robbery, burglary, theft, and rioting 
+              follow declining trends, while rates of rape show an increasing trend between 1971 and 2011. The homicide trend is the only crime category following the global crime trend. This visualisation depicts 
+            variation in number of Crime of respective states with the passage of time.  </p>
+          </div>
+        </div>
+        <div class="pure-u-3-5">
+          <div id="vis3" class="vis-container">
+            <div class="description description-right"></div>
+          </div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+
+      <div class= 'pure-g' style="margin-top: 2cm;">
+        <div class = "pure-u-1-1" >
+          <p> <b>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This visualisation is created by 
+            <a href ="https://www.linkedin.com/in/lakshay-bhatia-a9030816b/" style="color:#14bb7b" target = "_blank" ><b> Lakshay Bhatia</b> </a> <i class="fa fa-linkedin fa_custom"></i>.
+            Data source is <a href ="https://data.gov.in/" style="color:#14bb7b" target = "_blank"> <b>data.gov.in</b></a></b> 
+          </p>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+
+        var spec2 = "https://laksh15.github.io/FIT3179/A2/age.json";
+        var spec3 = "https://laksh15.github.io/FIT3179/A2/time.json";
+        var spec4 = "https://laksh15.github.io/FIT3179/A2/map (2).json";
+        var spec5 = "https://laksh15.github.io/FIT3179/A2/pie.json";
+        var spec6 = "https://laksh15.github.io/FIT3179/A2/states.json";
+
+
+
+        vegaEmbed('#vis2', spec2, { "actions": false, "mode": "vega-lite" }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis3', spec3, { "actions": false, "mode": "vega-lite" }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis4', spec4, { "actions": false, "mode": "vega-lite" }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis5', spec5, { "actions": false, "mode": "vega-lite" }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis6', spec6, { "actions": false, "mode": "vega-lite" }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+      </script>
+</body>
+</html>
