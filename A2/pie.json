@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "width": 500,
   "height": 500,
-  "title": " Different types of Crimes  ",
   "description": "A simple pie chart with embedded data.",
   "data": {
     "url": "https://raw.githubusercontent.com/laksh15/FIT3179/master/A2/pie3.csv"
