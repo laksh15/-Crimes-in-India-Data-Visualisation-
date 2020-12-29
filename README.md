@@ -4,4 +4,4 @@ Vega-Lite provides a higher-level grammar for visual analysis, comparable to ggp
 Visulaisaton depicts different types of crimes happened in different states of India over time period of 2002-2012.
 ## Setup
 To run this project, copy url and run 
-### 
+### https://laksh15.github.io/-Crimes-in-India-Data-Visualisation-/A2/
